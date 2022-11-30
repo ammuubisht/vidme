@@ -26,11 +26,11 @@ let joinAndDisplayLocalStream = async () =>{
     }
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
 
-    let member = await createUser()
+    await createUser()
 
     let player = `
     <div class="video-container" id="user-container-${UID}">
-        <div id="username-wrapper"><span id="user-name">${member.name}</span></div>
+        <div id="username-wrapper"><span id="user-name"></span></div>
         <div class="video-player" id="user-${UID}"></div>
     </div>`
 
