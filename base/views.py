@@ -32,40 +32,42 @@ def lobby(request):
 def room(request):
     return render(request, 'base/room.html')
 
-@csrf_exempt
-def createUser(request):
-    data = json.loads(request.body)
+# @csrf_exempt
+# def createUser(request):
+#     data = json.loads(request.body)
 
-    member, created = RoomMember.objects.get_or_create(
-        name=data['name'],
-        uid = data['uid'],
-        room_name = data['room_name']
-        )
-    return JsonResponse({'name': data['name']}, safe=False)
+#     member, created = RoomMember.objects.get_or_create(
+#         name=data['name'],
+#         uid = data['uid'],
+#         room_name = data['room_name']
+#         )
+        
+#     # print(data)
+#     return JsonResponse({'name': data['name']}, safe=False)
 
-def getUser(request):
-    uid = request.GET.get('uid')
-    room_name = request.GET.get('room_name')
+# def getUser(request):
+#     uid = request.GET.get('uid')
+#     room_name = request.GET.get('room_name')
 
-    member = RoomMember.objects.get(
-        uid = uid,
-        room_name = room_name
-    )
+#     member = RoomMember.objects.get(
+#         uid = uid,
+#         room_name = room_name
+#     )
 
-    name = member.name
-    return JsonResponse({'name': member.name}, safe=False)
+#     name = member.name
+#     return JsonResponse({'name': member.name}, safe=False)
 
-@csrf_exempt
-def deleteUser(request):
-    data = json.loads(request.body)
+# @csrf_exempt
+# def deleteUser(request):
+#     data = json.loads(request.body)
 
-    member = RoomMember.objects.get(
-        name=data['name'],
-        uid = data['uid'],
-        room_name = data['room_name']
-        )
-    member.delete()
-    return JsonResponse('member deleted!', safe=False)
+#     member = RoomMember.objects.get(
+#         name=data['name'],
+#         uid = data['uid'],
+#         room_name = data['room_name']
+#         )
+#     member.delete()
+#     return JsonResponse('member deleted!', safe=False)
 
 
 def loginPage(request):
