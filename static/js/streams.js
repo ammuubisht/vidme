@@ -26,9 +26,6 @@ let joinAndDisplayLocalStream = async () =>{
     }
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
 
-    // let member = await createUser()
-
-    // console.log("Member " + member);
     let player = `
     <div class="video-container" id="user-container-${UID}">
         <div id="username-wrapper"><span id="user-name"></span></div>
@@ -53,7 +50,7 @@ let handleUserJoined = async (user, mediaType) =>{
             player.remove()
         }
 
-        // let member = await getUser(user)
+        
 
         player = `
         <div class="video-container" id="user-container-${user.uid}">
@@ -85,7 +82,7 @@ let leaveAndRemoveLocalStream = async () =>{
 
     await client.leave()
 
-    // deleteUser()
+    
     window.open('/', '_self')
 }
 
@@ -110,43 +107,11 @@ let toggleMic = async (e) =>{
 
 }
 
-// let createUser = async() =>{
-//     let response = await fetch('/create_member/', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({'name' : username, 'room_name': CHANNEL, 'uid': UID})
-//     })
 
-//     let member = await response.json()
-//     return member
-// }
-
-// let getUser = async (user) =>{
-//     let response = await fetch(`/get_member/?uid=${user.uid}&room_name=${CHANNEL}`)
-
-//     let member = await response.json()
-
-//     return member
-// }
-
-// let deleteUser = async() =>{
-//     let response = await fetch('/delete_member/', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({'name' : username, 'room_name': CHANNEL, 'uid': UID})
-//     })
-
-//     let member = await response.json()
-    
-// }
 
 joinAndDisplayLocalStream()
 
-// window.addEventListener('beforeunload', deleteUser)
+
 document.getElementById('end-btn').addEventListener('click', leaveAndRemoveLocalStream)
 document.getElementById('video-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)

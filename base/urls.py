@@ -9,8 +9,6 @@ urlpatterns = [
     path('logout/', logoutUser, name='logout'),
 
     path('get_token/', getToken),
-    # path('create_member/', createUser),
-    # path('get_member/', getUser),
-    # path('delete_member/', deleteUser),
+    
 
 ]
